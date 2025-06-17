@@ -4,6 +4,8 @@ import PageMeta from "../../components/common/PageMeta";
 import BooksTableData from "../../components/tables/BasicTables/BooksTableData";
 
 export default function BooksTable() {
+  
+  
   return (
     <>
       <PageMeta
