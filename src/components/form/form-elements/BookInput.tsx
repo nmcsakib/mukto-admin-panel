@@ -17,6 +17,8 @@ type BookInputsProps = {
   setPages: React.Dispatch<React.SetStateAction<string>>;
   details: string;
   setDetails: React.Dispatch<React.SetStateAction<string>>;
+  secretCode: string;
+  setSecretCode: React.Dispatch<React.SetStateAction<string>>;
   handleSubmit: (e: React.FormEvent) => void
 };
 
@@ -36,9 +38,11 @@ export default function BookInputs({
   setPages,
   details,
   setDetails,
-  handleSubmit
+  handleSubmit,
+  secretCode,
+  setSecretCode
 }: BookInputsProps) {
-  
+
 
   return (
     <ComponentCard title="Add Book">
@@ -103,6 +107,15 @@ export default function BookInputs({
             value={details}
             onChange={(value) => setDetails(value)}
             rows={6}
+          />
+        </div>
+        <div>
+          <Label htmlFor="secret-code">Secret code</Label>
+          <Input
+            id="secret-code"
+            type="text"
+            value={secretCode}
+            onChange={(e) => setSecretCode(e.target.value)}
           />
         </div>
 

@@ -3,6 +3,7 @@ import PageBreadcrumb from "../../components/common/PageBreadCrumb";
 import BookInputs from "../../components/form/form-elements/BookInput";
 import DropzoneComponent from "../../components/form/form-elements/DropZone";
 import PageMeta from "../../components/common/PageMeta";
+import { toast } from "react-toastify";
 
 export default function AddBook() {
   const [bookName, setBookName] = useState("");
@@ -36,13 +37,15 @@ export default function AddBook() {
         
         if(data.insertedId){
             console.log(data, data.insertedId)
-            e.target.reset();
-
+          toast("✅ Book Added Successfully")
         }
+    }).catch(err => {
+      console.log(err);
+      toast("Something went wrong!")
     })
 
     console.log("Submitted Book:", bookData);
-    // Optional: API call
+  
   };
 
   return (

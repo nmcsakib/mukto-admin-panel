@@ -8,12 +8,22 @@ import Badge from "../ui/badge/Badge";
 
 export default function BooksMetrics() {
   const [books, setBooks] = useState(0)
+  const [members, setMembers] = useState(0)
   // console.log(import.meta.env.VITE_SERVER);
      useEffect(() => {
         fetch(`${import.meta.env.VITE_SERVER}/All-books`).then(res => res.json()).then(data => {
     
           // setShowBooks(data[0].slice(0, 8))
           setBooks(data[1])
+          // setLength(data[1])
+          console.log(data)
+        })
+      }, [])
+     useEffect(() => {
+        fetch(`${import.meta.env.VITE_SERVER}/members`).then(res => res.json()).then(data => {
+    
+          // setShowBooks(data[0].slice(0, 8))
+          setMembers(data.length)
           // setLength(data[1])
           console.log(data)
         })
@@ -32,7 +42,7 @@ export default function BooksMetrics() {
               Members
             </span>
             <h4 className="mt-2 font-bold text-gray-800 text-title-sm dark:text-white/90">
-              500
+              {members}
             </h4>
           </div>
           <Badge color="success">

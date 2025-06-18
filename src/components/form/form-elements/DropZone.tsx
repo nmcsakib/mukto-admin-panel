@@ -1,15 +1,16 @@
 import ComponentCard from "../../common/ComponentCard";
 import { useDropzone } from "react-dropzone";
+import uploadToImgbb from "../../../../imgBBurl"
 // import Dropzone from "react-dropzone";
 
 const DropzoneComponent = ({title, picture, setPicture}: {title: string, picture: string, setPicture: React.Dispatch<React.SetStateAction<string>> }) => {
- const onDrop = (acceptedFiles: File[]) => {
+ const onDrop = async (acceptedFiles: File[]) => {
   console.log("Files dropped:", acceptedFiles);
 
   if (acceptedFiles.length > 0) {
     const file = acceptedFiles[0];
-    const url = URL.createObjectURL(file);
-    setPicture(url);
+    const profile = await uploadToImgbb(file)
+    setPicture(profile);
   }
 };
 
