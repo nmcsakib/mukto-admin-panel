@@ -1,5 +1,5 @@
 import PageBreadcrumb from "../../components/common/PageBreadCrumb";
-import DefaultInputs from "../../components/form/form-elements/BookInput";
+import BookInputs from "../../components/form/form-elements/BookInput";
 import InputGroup from "../../components/form/form-elements/InputGroup";
 import CheckboxComponents from "../../components/form/form-elements/CheckboxComponents";
 import RadioButtons from "../../components/form/form-elements/RadioButtons";
@@ -20,7 +20,7 @@ export default function FormElements() {
       <PageBreadcrumb pageTitle="From Elements" />
       <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
         <div className="space-y-6">
-          <DefaultInputs />
+          <BookInputs />
           <SelectInputs />
           <TextAreaInput />
           <InputStates />

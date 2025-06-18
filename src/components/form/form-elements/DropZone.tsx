@@ -2,11 +2,17 @@ import ComponentCard from "../../common/ComponentCard";
 import { useDropzone } from "react-dropzone";
 // import Dropzone from "react-dropzone";
 
-const DropzoneComponent = ({title}: {title: string}) => {
-  const onDrop = (acceptedFiles: File[]) => {
-    console.log("Files dropped:", acceptedFiles);
-    // Handle file uploads here
-  };
+const DropzoneComponent = ({title, picture, setPicture}: {title: string, picture: string, setPicture: React.Dispatch<React.SetStateAction<string>> }) => {
+ const onDrop = (acceptedFiles: File[]) => {
+  console.log("Files dropped:", acceptedFiles);
+
+  if (acceptedFiles.length > 0) {
+    const file = acceptedFiles[0];
+    const url = URL.createObjectURL(file);
+    setPicture(url);
+  }
+};
+
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
@@ -34,7 +40,9 @@ const DropzoneComponent = ({title}: {title: string}) => {
           {/* Hidden Input */}
           <input {...getInputProps()} />
 
-          <div className="dz-message flex flex-col items-center m-0!">
+         
+          {
+            picture ? <img src={picture} alt="" /> :  <div className="dz-message flex flex-col items-center m-0!">
             {/* Icon Container */}
             <div className="mb-[22px] flex justify-center">
               <div className="flex h-[68px] w-[68px]  items-center justify-center rounded-full bg-gray-200 text-gray-700 dark:bg-gray-800 dark:text-gray-400">
@@ -67,6 +75,7 @@ const DropzoneComponent = ({title}: {title: string}) => {
               Browse File
             </span>
           </div>
+          }
         </form>
       </div>
     </ComponentCard>

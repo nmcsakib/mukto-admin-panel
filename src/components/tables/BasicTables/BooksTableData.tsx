@@ -8,8 +8,6 @@ import {
 
 import Badge from "../../ui/badge/Badge";
 import { useEffect, useState } from "react";
-import dotenv from 'dotenv';
-dotenv.config();
 
 
 type Order = {
@@ -25,9 +23,9 @@ type Order = {
 
 export default function BooksTableData() {
   const [books, setBooks] = useState([])
-
+// console.log(import.meta.env.VITE_SERVER);
    useEffect(() => {
-      fetch(`${process.env.SERVER}/All-books`).then(res => res.json()).then(data => {
+      fetch(`${import.meta.env.VITE_SERVER}/All-books`).then(res => res.json()).then(data => {
   
         // setShowBooks(data[0].slice(0, 8))
         setBooks(data[0])

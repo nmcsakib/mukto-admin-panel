@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   ArrowUpIcon,
   BoxIconLine,
@@ -5,7 +6,18 @@ import {
 } from "../../icons";
 import Badge from "../ui/badge/Badge";
 
-export default function EcommerceMetrics() {
+export default function BooksMetrics() {
+  const [books, setBooks] = useState(0)
+  // console.log(import.meta.env.VITE_SERVER);
+     useEffect(() => {
+        fetch(`${import.meta.env.VITE_SERVER}/All-books`).then(res => res.json()).then(data => {
+    
+          // setShowBooks(data[0].slice(0, 8))
+          setBooks(data[1])
+          // setLength(data[1])
+          console.log(data)
+        })
+      }, [])
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6">
       {/* <!-- Metric Item Start --> */}
@@ -20,7 +32,7 @@ export default function EcommerceMetrics() {
               Members
             </span>
             <h4 className="mt-2 font-bold text-gray-800 text-title-sm dark:text-white/90">
-             500
+              500
             </h4>
           </div>
           <Badge color="success">
@@ -42,7 +54,7 @@ export default function EcommerceMetrics() {
               Books
             </span>
             <h4 className="mt-2 font-bold text-gray-800 text-title-sm dark:text-white/90">
-              2000
+              {books}
             </h4>
           </div>
 
