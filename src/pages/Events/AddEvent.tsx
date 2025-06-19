@@ -19,7 +19,9 @@ export default function AddEvent() {
                 </div>
                 <div className="space-y-6">
 
-                    <DropzoneComponent title="Event Image" />
+                    <DropzoneComponent title="Event Image" picture={""} setPicture={function (): void {
+                        throw new Error("Function not implemented.");
+                    } } />
                 </div>
             </div>
         </div>

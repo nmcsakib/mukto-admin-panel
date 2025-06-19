@@ -6,9 +6,8 @@ import {
 } from "../../icons";
 import Badge from "../ui/badge/Badge";
 
-export default function BooksMetrics() {
+export default function BooksMetrics({members}: {members: number}) {
   const [books, setBooks] = useState(0)
-  const [members, setMembers] = useState(0)
   // console.log(import.meta.env.VITE_SERVER);
      useEffect(() => {
         fetch(`${import.meta.env.VITE_SERVER}/All-books`).then(res => res.json()).then(data => {
@@ -18,16 +17,9 @@ export default function BooksMetrics() {
           // setLength(data[1])
           console.log(data)
         })
-      }, [])
-     useEffect(() => {
-        fetch(`${import.meta.env.VITE_SERVER}/members`).then(res => res.json()).then(data => {
-    
-          // setShowBooks(data[0].slice(0, 8))
-          setMembers(data.length)
-          // setLength(data[1])
-          console.log(data)
-        })
-      }, [])
+      })
+      
+ 
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6">
       {/* <!-- Metric Item Start --> */}

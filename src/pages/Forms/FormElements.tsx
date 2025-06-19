@@ -20,7 +20,25 @@ export default function FormElements() {
       <PageBreadcrumb pageTitle="From Elements" />
       <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
         <div className="space-y-6">
-          <BookInputs />
+          <BookInputs bookName={""} setBookName={function (): void {
+            throw new Error("Function not implemented.");
+          } } writer={""} setWriter={function (): void {
+            throw new Error("Function not implemented.");
+          } } publications={""} setPublications={function (): void {
+            throw new Error("Function not implemented.");
+          } } type={""} setType={function (): void {
+            throw new Error("Function not implemented.");
+          } } price={""} setPrice={function (): void {
+            throw new Error("Function not implemented.");
+          } } pages={""} setPages={function (): void {
+            throw new Error("Function not implemented.");
+          } } details={""} setDetails={function (): void {
+            throw new Error("Function not implemented.");
+          } } secretCode={""} setSecretCode={function (): void {
+            throw new Error("Function not implemented.");
+          } } handleSubmit={function (): void {
+            throw new Error("Function not implemented.");
+          } } />
           <SelectInputs />
           <TextAreaInput />
           <InputStates />

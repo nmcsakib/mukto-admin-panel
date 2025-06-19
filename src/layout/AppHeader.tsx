@@ -1,6 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-
-import { Link } from "react-router";
 import { useSidebar } from "../context/SidebarContext";
 import { ThemeToggleButton } from "../components/common/ThemeToggleButton";
 import NotificationDropdown from "../components/header/NotificationDropdown";
@@ -83,7 +81,7 @@ const AppHeader: React.FC = () => {
             {/* Cross Icon */}
           </button>
 
-          <Link to="/" className="lg:hidden">
+           <a  href="https://mukto-pathagar.vercel.app/" className="lg:hidden">
             <img
               className="dark:hidden"
               src="./images/logo/mukto-logo.png"
@@ -94,7 +92,7 @@ const AppHeader: React.FC = () => {
               src="./images/logo/mukto-logo-dark.png"
               alt="Logo"
             />
-          </Link>
+          </a>
 
           <button
             onClick={toggleApplicationMenu}

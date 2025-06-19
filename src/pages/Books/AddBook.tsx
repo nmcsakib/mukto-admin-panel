@@ -14,6 +14,8 @@ export default function AddBook() {
   const [pages, setPages] = useState("");
   const [details, setDetails] = useState("");
   const [picture, setPicture] = useState("");
+  const [secretCode, setSecretCode] = useState("");
+
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,23 +31,29 @@ export default function AddBook() {
       details,
     };
 
-    fetch(`${import.meta.env.VITE_SERVER}/All-books`, {
-        method: "POST",
-        headers: {'content-type': 'application/json'},
-        body: JSON.stringify(bookData)
+     if(secretCode === import.meta.env.VITE_SECRET_CODE){
+
+        fetch(`${import.meta.env.VITE_SERVER}/All-books`, {
+      method: "POST",
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(bookData)
     }).then(res => res.json()).then(data => {
-        
-        if(data.insertedId){
-            console.log(data, data.insertedId)
-          toast("✅ Book Added Successfully")
-        }
+
+      if (data.insertedId) {
+        console.log(data, data.insertedId)
+        toast("✅ Book Added Successfully")
+      }
     }).catch(err => {
       console.log(err);
       toast("Something went wrong!")
     })
+     } else{
+      toast("secret code is incorrect.")
+     }
+  
 
     console.log("Submitted Book:", bookData);
-  
+
   };
 
   return (
@@ -73,6 +81,9 @@ export default function AddBook() {
             details={details}
             setDetails={setDetails}
             handleSubmit={handleSubmit}
+            secretCode={secretCode}
+            setSecretCode={setSecretCode}
+
           />
         </div>
         <div className="space-y-6">

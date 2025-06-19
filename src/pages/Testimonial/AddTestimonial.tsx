@@ -19,7 +19,9 @@ export default function AddTestimonial() {
                 </div>
                 <div className="space-y-6">
 
-                    <DropzoneComponent title="Image" />
+                    <DropzoneComponent title="Image" picture={""} setPicture={function (): void {
+                        throw new Error("Function not implemented.");
+                    } } />
                 </div>
             </div>
         </div>
