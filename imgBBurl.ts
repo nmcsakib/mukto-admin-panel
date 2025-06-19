@@ -1,10 +1,9 @@
 const uploadToImgbb = async (imageFile: string | Blob) => {
   const formData = new FormData();
   formData.append('image', imageFile);
-  const API_KEY = '52975ba81f419dcf097bd68ab48c6fb2';
 
   try {
-    const res = await fetch(`https://api.imgbb.com/1/upload?key=${API_KEY}`, {
+    const res = await fetch(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_API_KEY}`, {
       method: 'POST',
       body: formData
     });
